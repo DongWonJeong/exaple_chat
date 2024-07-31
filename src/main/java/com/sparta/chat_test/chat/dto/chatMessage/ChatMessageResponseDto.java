@@ -15,7 +15,7 @@ public class ChatMessageResponseDto {
 
     public ChatMessageResponseDto(ChatMessage chatMessage) {
         this.messageId = chatMessage.getMessageId();
-        this.userId = chatMessage.getUser().getId();
+        this.userId = chatMessage.getUser().getUserId();
         this.message = chatMessage.getMessage();
         this.sendDate = LocalDateTime.now();
     }

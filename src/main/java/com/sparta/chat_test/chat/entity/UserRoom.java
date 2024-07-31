@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.net.ssl.SSLSession;
+
 @Entity
 @Getter
 @NoArgsConstructor
@@ -15,15 +17,16 @@ public class UserRoom {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "room_id", nullable = false)
+    @JoinColumn(name = "roomId", nullable = false)
     private ChatRoom chatRoom;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "userId", nullable = false)
     private User user;
 
     public UserRoom(ChatRoom chatRoom, User user) {
         this.chatRoom = chatRoom;
         this.user = user;
     }
+
 }

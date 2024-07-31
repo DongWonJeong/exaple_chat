@@ -13,6 +13,6 @@ public class UserRoomResponseDto {
     public UserRoomResponseDto(UserRoom userRoom) {
         this.id = userRoom.getId();
         this.roomId = userRoom.getChatRoom().getRoomId();
-        this.userId = userRoom.getUser().getId();
+        this.userId = userRoom.getUser().getUserId();
     }
 }

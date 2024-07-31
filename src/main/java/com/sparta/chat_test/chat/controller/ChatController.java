@@ -7,6 +7,7 @@ import com.sparta.chat_test.chat.dto.chatMessage.ChatMessageResponseDto;
 import com.sparta.chat_test.chat.dto.chatMessage.ReadMessageResponseDto;
 import com.sparta.chat_test.chat.dto.chatRoom.ChatRoomRequestDto;
 import com.sparta.chat_test.chat.dto.chatRoom.ChatRoomResponseDto;
+import com.sparta.chat_test.chat.dto.chatRoom.RoomListResponseDto;
 import com.sparta.chat_test.chat.service.ChatMessageService;
 import com.sparta.chat_test.chat.service.ChatRoomService;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/foot/chat/rooms")
-public class ChatController {
+public class  ChatController {
 
     private final ChatRoomService chatRoomService;
     private final ChatMessageService chatMessageService;
@@ -33,14 +34,14 @@ public class ChatController {
 
     // 채팅방 전체 조회
     @GetMapping()
-    public List<ChatRoomResponseDto> getRoom() {
-        return chatRoomService.getRoom();
+    public List<RoomListResponseDto> getListRoom() {
+        return chatRoomService.getListRoom();
     }
 
     // 채팅방 삭제
     @DeleteMapping("/{roomId}")
-    public String deleteRoom(@PathVariable Long roomId) {
-        return chatRoomService.deleteRoom(roomId);
+    public String deleteRoom(@PathVariable Long roomId, @RequestParam Long userId) {
+        return chatRoomService.deleteRoom(roomId, userId);
     }
 
     // 채팅방 참여
