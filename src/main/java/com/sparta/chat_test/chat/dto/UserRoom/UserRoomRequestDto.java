@@ -1,4 +1,4 @@
-package com.sparta.chat_test.chat.dto.userRoom;
+package com.sparta.chat_test.chat.dto.UserRoom;
 
 import lombok.Getter;
 

@@ -1,7 +1,7 @@
 package com.sparta.chat_test.chat.controller;
 
-import com.sparta.chat_test.chat.dto.userRoom.UserRoomRequestDto;
-import com.sparta.chat_test.chat.dto.userRoom.UserRoomResponseDto;
+import com.sparta.chat_test.chat.dto.UserRoom.UserRoomRequestDto;
+import com.sparta.chat_test.chat.dto.UserRoom.UserRoomResponseDto;
 import com.sparta.chat_test.chat.dto.chatMessage.ChatMessageRequestDto;
 import com.sparta.chat_test.chat.dto.chatMessage.ChatMessageResponseDto;
 import com.sparta.chat_test.chat.dto.chatMessage.ReadMessageResponseDto;

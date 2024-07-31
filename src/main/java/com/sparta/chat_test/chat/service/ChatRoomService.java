@@ -1,7 +1,7 @@
 package com.sparta.chat_test.chat.service;
 
-import com.sparta.chat_test.chat.dto.userRoom.UserRoomRequestDto;
-import com.sparta.chat_test.chat.dto.userRoom.UserRoomResponseDto;
+import com.sparta.chat_test.chat.dto.UserRoom.UserRoomRequestDto;
+import com.sparta.chat_test.chat.dto.UserRoom.UserRoomResponseDto;
 import com.sparta.chat_test.chat.dto.chatRoom.ChatRoomRequestDto;
 import com.sparta.chat_test.chat.dto.chatRoom.ChatRoomResponseDto;
 import com.sparta.chat_test.chat.dto.chatRoom.RoomListResponseDto;
@@ -50,6 +50,12 @@ public class ChatRoomService {
 
         // ChatRoom 저장
         ChatRoom savedChatRoom = chatRoomRepository.save(chatRoom);
+
+        // UserRoom 엔티티 생성
+        UserRoom userRoom = new UserRoom(savedChatRoom, user);
+
+        // UserRoom 저장
+        userRoomRepository.save(userRoom);
 
         return new ChatRoomResponseDto(savedChatRoom);
     }
