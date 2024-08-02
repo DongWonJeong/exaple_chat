@@ -1,7 +1,6 @@
 package com.sparta.chat_test.chat.dto.chatRoom;
 
 import com.sparta.chat_test.chat.entity.ChatRoom;
-import com.sparta.chat_test.chat.entity.User;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

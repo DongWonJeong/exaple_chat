@@ -8,6 +8,8 @@ import com.sparta.chat_test.chat.dto.chatRoom.RoomListResponseDto;
 import com.sparta.chat_test.chat.entity.ChatRoom;
 import com.sparta.chat_test.chat.entity.User;
 import com.sparta.chat_test.chat.entity.UserRoom;
+import com.sparta.chat_test.chat.global.CustomException;
+import static com.sparta.chat_test.chat.global.ErrorCode.*;
 import com.sparta.chat_test.chat.repository.ChatRoomRepository;
 import com.sparta.chat_test.chat.repository.UserRepository;
 import com.sparta.chat_test.chat.repository.UserRoomRepository;
@@ -38,12 +40,12 @@ public class ChatRoomService {
 
         //  같은 이름의 채팅방 존재 여부
         if (chatRoomRepository.existsByRoomName(chatRoomRequestDto.getRoomName())) {
-            throw new IllegalArgumentException("이미 존재하는 채팅방 이름입니다.");
+            throw new CustomException(400, CHATROOM_ALREADY_EXISTS, "이미 존재하는 채팅방 이름입니다.");
         }
 
         // 사용자 존재 여부
         User user = userRepository.findById(chatRoomRequestDto.getUserId())
-                .orElseThrow(() -> new IllegalArgumentException("사용자가 없습니다."));
+                .orElseThrow(() -> new CustomException(404, USER_NOT_FOUND, "사용자가 없습니다."));
 
         // ChatRoom 엔티티 생성
         ChatRoom chatRoom = new ChatRoom(chatRoomRequestDto, user);
@@ -82,7 +84,7 @@ public class ChatRoomService {
     public String deleteRoom(Long roomId, Long userId) {
         // 채팅방 존재 여부 확인
         ChatRoom chatRoom = chatRoomRepository.findById(roomId)
-                .orElseThrow(() -> new IllegalArgumentException("채팅방이 존재하지 않습니다."));
+                .orElseThrow(() -> new CustomException(404, CHATROOM_NOT_FOUND, "채팅방이 존재하지 않습니다."));
 
         // 사용자가 채팅방에 속해 있는지 확인
         boolean userInRoom = false;
@@ -94,7 +96,7 @@ public class ChatRoomService {
         }
 
         if (!userInRoom) {
-            throw new IllegalArgumentException("해당 사용자는 이 채팅방에 속해 있지 않아 삭제할 수 없습니다.");
+            throw new CustomException(400, USER_NOT_IN_ROOM, "해당 사용자는 이 채팅방에 속해 있지 않아 삭제할 수 없습니다.");
         }
 
         // 채팅방과 관련된 UserRoom 엔티티들 삭제
@@ -111,11 +113,11 @@ public class ChatRoomService {
 
         // 채팅방 존재 여부
         ChatRoom chatRoom = chatRoomRepository.findById(userRoomRequestDto.getRoomId())
-                .orElseThrow(() -> new IllegalArgumentException("채팅방이 존재하지 않습니다."));
+                .orElseThrow(() -> new CustomException(404, CHATROOM_NOT_FOUND, "채팅방이 존재하지 않습니다."));
 
         // 사용자 존재 여부
         User user = userRepository.findById(userRoomRequestDto.getUserId())
-                .orElseThrow(() -> new IllegalArgumentException("사용자가 없습니다."));
+                .orElseThrow(() -> new CustomException(400, USER_NOT_IN_ROOM, "해당 사용자는 이 채팅방에 속해 있지 않습니다."));
 
         // UserRoom 엔티티 생성
         UserRoom userRoom = new UserRoom(chatRoom, user);

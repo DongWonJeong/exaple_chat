@@ -1,12 +1,10 @@
 package com.sparta.chat_test.chat.entity;
 
-import com.sparta.chat_test.chat.dto.chatRoom.ChatRoomRequestDto;
 import com.sparta.chat_test.chat.dto.user.UserRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

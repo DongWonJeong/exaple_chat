@@ -7,4 +7,5 @@ public class ChatMessageRequestDto {
 
     private Long userId;
     private String message;
+
 }

@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.net.ssl.SSLSession;
-
 @Entity
 @Getter
 @NoArgsConstructor
@@ -28,5 +26,4 @@ public class UserRoom {
         this.chatRoom = chatRoom;
         this.user = user;
     }
-
 }

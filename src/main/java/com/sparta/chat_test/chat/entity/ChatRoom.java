@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.net.ssl.SSLSession;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
